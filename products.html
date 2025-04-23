@@ -6,14 +6,13 @@
     <title>Elixir Lounge - Productos</title>
     <style>
         :root {
-            --primary-color: #4a154b; /* Púrpura oscuro */
-            --secondary-color: #9c27b0; /* Púrpura medio */
-            --accent-color: #f8c471; /* Dorado */
-            --text-color: #333;
-            --light-text: #fff;
-            --background-color: #f9f9f9;
-            --card-background: #fff;
-        }
+    --primary: #5C2A9D;
+    --secondary: #D4AF37;
+    --accent: #45B69C;
+    --dark: #121212;
+    --light: #E5E5E5;
+    --transition: all 0.3s ease;
+}
 
         * {
             margin: 0;
@@ -23,58 +22,204 @@
         }
 
         body {
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--dark);
+    color: var(--light);
+    overflow-x: hidden;
+    transition: var(--transition);
+}
 
-        header {
-            background-color: var(--primary-color);
-            color: var(--light-text);
-            padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+        body.nav-open {
+    padding-left: 250px;
+}
 
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 20px;
+    background-color: rgba(18, 18, 18, 0.95);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    backdrop-filter: blur(5px);
+}
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.logo {
+    display: flex;
+    align-items: center;
+}
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--light-text);
-            text-decoration: none;
-        }
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--secondary);
+    margin-left: 10px;
+}
 
-        .nav-menu {
-            display: flex;
-            list-style: none;
-        }
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    fill: var(--secondary);
+}
 
-        .nav-menu li {
-            margin-left: 2rem;
-        }
+.menu-toggle {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    cursor: pointer;
+    z-index: 102;
+}
 
-        .nav-menu a {
-            color: var(--light-text);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+.menu-toggle span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: var(--light);
+    border-radius: 3px;
+    transition: var(--transition);
+}
 
-        .nav-menu a:hover {
-            color: var(--accent-color);
-        }
+.menu-toggle span:nth-child(1) {
+    top: 5px;
+}
+
+.menu-toggle span:nth-child(2) {
+    top: 14px;
+}
+
+.menu-toggle span:nth-child(3) {
+    top: 23px;
+}
+
+.nav-open .menu-toggle span:nth-child(1) {
+    top: 14px;
+    transform: rotate(45deg);
+    background: var(--secondary);
+}
+
+.nav-open .menu-toggle span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-open .menu-toggle span:nth-child(3) {
+    top: 14px;
+    transform: rotate(-45deg);
+    background: var(--secondary);
+}
+
+.side-nav {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100vh;
+    background-color: rgba(28, 28, 28, 0.98);
+    backdrop-filter: blur(10px);
+    padding: 100px 20px 40px;
+    transition: var(--transition);
+    z-index: 101;
+    overflow-y: auto;
+}
+
+.side-nav.active {
+    left: 0;
+    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.nav-links a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: var(--light);
+    text-decoration: none;
+    display: block;
+    padding: 8px 0;
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-links a:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--secondary);
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--secondary);
+    transform: translateX(5px);
+}
+
+.nav-links a:hover:before {
+    width: 30px;
+}
+
+.nav-links a.active {
+    color: var(--secondary);
+    font-weight: 400;
+}
+
+.nav-links a.active:before {
+    width: 30px;
+}
+
+.nav-social {
+    margin-top: 40px;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-social a {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.nav-social a:hover {
+    background-color: var(--primary);
+    transform: translateY(-5px);
+}
+
+.nav-social svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--light);
+}
+
+.main-content {
+    padding-top: 70px;
+    min-height: 100vh;
+    transition: var(--transition);
+}
 
         main {
             padding: 2rem 0;
+            margin-left: 10%;
+            margin-right: 10%;
+            margin-top: 5%;
         }
 
         .product-main {
@@ -151,6 +296,7 @@
             border: 1px solid #ddd;
             font-size: 1.2rem;
             cursor: pointer;
+            color: white;
         }
 
         .quantity-input {
@@ -194,7 +340,7 @@
         }
 
         .tab.active {
-            border-bottom: 3px solid var(--accent-color);
+            border-bottom: 3px solid #D4AF37;
             color: var(--primary-color);
             font-weight: bold;
         }
@@ -294,82 +440,211 @@
             background-color: var(--primary-color);
         }
 
-        footer {
-            background-color: var(--primary-color);
-            color: var(--light-text);
-            padding: 3rem 0;
-            margin-top: 4rem;
-        }
+        .footer {
+    padding: 60px 20px 30px;
+    background-color: rgba(12, 12, 12, 0.97);
+    
+}
 
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-        .footer-column h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent-color);
-        }
+.footer-logo {
+    flex: 1;
+    min-width: 250px;
+}
 
-        .footer-links {
-            list-style: none;
-        }
+.footer-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--secondary);
+    margin-bottom: 15px;
+}
 
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
+.footer-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(229, 229, 229, 0.7);
+    max-width: 300px;
+}
 
-        .footer-links a {
-            color: var(--light-text);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+.footer-links {
+    flex: 1;
+    min-width: 200px;
+}
 
-        .footer-links a:hover {
-            color: var(--accent-color);
-        }
+.footer-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--light);
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
 
-        .contact-info p {
-            margin-bottom: 0.8rem;
-        }
+.footer-title:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--secondary);
+}
 
-        .copyright {
-            margin-top: 2rem;
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
+.footer-nav {
+    list-style: none;
+}
 
-        @media (max-width: 768px) {
-            .product-main {
-                flex-direction: column;
-            }
+.footer-nav li {
+    margin-bottom: 10px;
+}
 
-            .nav-menu {
-                display: none;
-            }
-        }
+.footer-nav a {
+    color: rgba(229, 229, 229, 0.7);
+    text-decoration: none;
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+.footer-nav a:hover {
+    color: var(--secondary);
+    padding-left: 5px;
+}
+
+.footer-contact {
+    flex: 1;
+    min-width: 250px;
+}
+
+.contact-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    align-items: flex-start;
+}
+
+.contact-icon {
+    width: 20px;
+    height: 20px;
+    fill: var(--secondary);
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+.contact-info {
+    color: rgba(229, 229, 229, 0.7);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 30px;
+    margin-top: 50px;
+    border-top: 1px solid rgba(229, 229, 229, 0.1);
+    color: rgba(229, 229, 229, 0.5);
+    font-size: 13px;
+}
+
+        @keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 42px;
+    }
+    
+    .hero p {
+        font-size: 16px;
+    }
+    
+    .about-container {
+        flex-direction: column;
+    }
+    
+    .section-title {
+        font-size: 32px;
+    }
+    
+    .about-info h2 {
+        font-size: 28px;
+    }
+    
+    .about-stats {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 36px;
+    }
+    
+    .cocktail-card {
+        max-width: 100%;
+    }
+}
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">Elixir Lounge</a>
-                <ul class="nav-menu">
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Nosotros</a></li>
-                    <li><a href="#">Carta</a></li>
-                    <li><a href="#">Productos</a></li>
-                    <li><a href="#">Galería</a></li>
-                    <li><a href="#">Eventos</a></li>
-                    <li><a href="#">Contacto</a></li>
-                </ul>
-            </nav>
+    <header class="header">
+        <div class="logo">
+            <img src="/assests/SVG icons/cup.svg" alt="Logo" class="logo-icon" viewBox="0 0 24 24">
+            <span class="logo-text">Six Drinks</span>
+        </div>
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </header>
+    
+    <!-- Side Navigation -->
+    <nav class="side-nav" id="side-nav">
+        <ul class="nav-links">
+            <li><a href="#" class="active">Inicio</a></li>
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Carta</a></li>
+            <li><a href="#">Galería</a></li>
+            <li><a href="#">Eventos</a></li>
+            <li><a href="#">Reservas</a></li>
+            <li><a href="contact.html">Contacto</a></li>
+        </ul>
+        <div class="nav-social">
+            <a href="#">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C15.9164 21.5878 18.0622 20.3855 19.6099 18.57C21.1576 16.7546 22.0054 14.4456 22 12.06C22 6.53 17.5 2.04 12 2.04Z" />
+                </svg>
+            </a>
+            <a href="#">
+                <svg viewBox="0 0 24 24">
+                    <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" />
+                </svg>
+            </a>
+            <a href="#">
+                <svg viewBox="0 0 24 24">
+                    <path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" />
+                </svg>
+            </a>
+        </div>
+    </nav>
 
     <main class="container">
         <div class="product-main">
@@ -485,39 +760,71 @@
         </div>
     </main>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Elixir Lounge</h3>
-                    <p>Un espacio único dedicado al arte de la mixología, donde la creatividad y el sabor se fusionan para ofrecer experiencias inolvidables.</p>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <div class="footer-logo-text">Six Drinks</div>
+                <p class="footer-desc">Un espacio único dedicado al arte de la mixología, donde la creatividad y el sabor se fusionan para ofrecer experiencias inolvidables.</p>
+            </div>
+            <div class="footer-links">
+                <h3 class="footer-title">Enlaces rápidos</h3>
+                <ul class="footer-nav">
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Nuestra carta</a></li>
+                    <li><a href="#">Reservas</a></li>
+                    <li><a href="#">Eventos</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3 class="footer-title">Contacto</h3>
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24">
+                        <path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z" />
+                    </svg>
+                    <div class="contact-info">Colegio Tecnico la Redencion<br>Pantoja, Republica Dominicana</div>
                 </div>
-                <div class="footer-column">
-                    <h3>Enlaces rápidos</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="#">Nuestra carta</a></li>
-                        <li><a href="#">Productos</a></li>
-                        <li><a href="#">Reservas</a></li>
-                        <li><a href="#">Eventos</a></li>
-                    </ul>
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24">
+                        <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z" />
+                    </svg>
+                    <div class="contact-info">+1 809 623 7760</div>
                 </div>
-                <div class="footer-column">
-                    <h3>Contacto</h3>
-                    <div class="contact-info">
-                        <p>Calle Imaginaria 123<br>28001 Madrid, España</p>
-                        <p>+34 912 345 678</p>
-                        <p>info@elixirlounge.com</p>
-                    </div>
+                <div class="contact-item">
+                    <svg class="contact-icon" viewBox="0 0 24 24">
+                        <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z" />
+                    </svg>
+                    <div class="contact-info">info@sixdrinks.com</div>
                 </div>
             </div>
-            <div class="copyright">
-                <p>© 2025 Elixir Lounge. Todos los derechos reservados.</p>
-            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Elixir Lounge. Todos los derechos reservados.
         </div>
     </footer>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const sideNav = document.getElementById('side-nav');
+            
+            menuToggle.addEventListener('click', function() {
+                sideNav.classList.toggle('active');
+                document.body.classList.toggle('nav-open');
+            });
+            
+            // Cierra el menú al hacer clic en un enlace (en móviles)
+            const navLinks = document.querySelectorAll('#side-nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth < 992) {
+                        sideNav.classList.remove('active');
+                        document.body.classList.remove('nav-open');
+                    }
+                });
+            });
+        });
+    
         // Simple tab functionality
         const tabs = document.querySelectorAll('.tab');
         const tabContents = document.querySelectorAll('.tab-content');
