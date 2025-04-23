@@ -337,7 +337,7 @@ body.nav-open {
     font-weight: 600;
     cursor: pointer;
     display: block;
-    margin: 40px auto 0;
+    margin: 40px auto 20px;
     transition: var(--transition);
     border-radius: 30px;
     position: relative;
@@ -372,6 +372,7 @@ body.nav-open {
     flex-wrap: wrap;
     gap: 30px;
     margin-top: 80px;
+    padding-bottom: 50px;
 }
 
 .info-card {
