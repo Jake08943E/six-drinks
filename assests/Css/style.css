@@ -213,7 +213,7 @@ body.nav-open {
 
 .hero {
     height: calc(100vh - 70px);
-    background: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.7)), url('/assests/Images/Bar-Fondo.jpg') center/cover no-repeat;
+    background: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.7)), url('../Images/Bar-Fondo.jpg') center/cover no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: center;
