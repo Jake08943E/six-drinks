@@ -15,8 +15,8 @@
 }
 
 body {
-    background-color: var(--light);
-    color: var(--dark);
+    background-color: var(--dark);
+    color: var(--light);
     line-height: 1.6;
 }
 
@@ -239,6 +239,7 @@ body.nav-open {
 
 .about-card {
     background-color: white;
+    color: #121212;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 2rem;
@@ -279,6 +280,7 @@ body.nav-open {
 
 .team-member {
     background-color: white;
+    color: #121212;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

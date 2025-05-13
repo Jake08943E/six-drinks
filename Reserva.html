@@ -21,15 +21,14 @@
     </div>
 </header>
 
-<!-- Side Navigation -->
+
 <nav class="side-nav" id="side-nav">
     <ul class="nav-links">
         <li><a href="index.html">Inicio</a></li>
         <li><a href="sobreNosotro.html">Nosotros</a></li>
-        <li><a href="#">Carta</a></li>
         <li><a href="#">Galería</a></li>
         <li><a href="#">Eventos</a></li>
-        <li><a href="#" class="active">Reservas</a></li>
+        <li><a href="Reserva.html" class="active">Reservas</a></li>
         <li><a href="contact.html">Contacto</a></li>
     </ul>
     <div class="nav-social">
@@ -51,16 +50,16 @@
     </div>
 </nav>
 
-<!-- Main Content -->
+
 <main class="main-content" id="main">
-    <!-- Banner -->
+    
     <section class="reservas-banner">
         <h1>Haz tu <span>Reserva</span></h1>
     </section>
 
-    <!-- Reservations Content -->
+    
     <div class="reservas-container">
-        <!-- Info Section -->
+        
         <section class="reservation-info">
             <div class="info-text">
                 <h2>Reserva tu experiencia única</h2>
@@ -72,7 +71,7 @@
             </div>
         </section>
 
-        <!-- Options -->
+        
         <section class="reservation-options">
             <div class="option-card">
                 <svg class="option-icon" viewBox="0 0 24 24">
@@ -97,7 +96,7 @@
             </div>
         </section>
 
-        <!-- Form Section -->
+        
         <section class="reservation-form-container">
             <div class="decor-circle"></div>
             <div class="decor-circle"></div>
@@ -180,8 +179,6 @@
     </div>
 
    
-
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-logo">
@@ -230,7 +227,7 @@
         </div>
     </footer>
 <script>
-     // Toggle menu functionality
+     
      const menuToggle = document.getElementById('menu-toggle');
         const sideNav = document.getElementById('side-nav');
         const body = document.body;
@@ -240,19 +237,18 @@
             body.classList.toggle('nav-open');
         });
         
-        // Form submission handling
+        
         const reservationForm = document.getElementById('reservation-form');
         
         reservationForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Here you would typically send the form data to your server
-            // This is just a demo validation and success message
+         
             
             const formElements = reservationForm.elements;
             let isValid = true;
             
-            // Basic validation
+        
             for (let i = 0; i < formElements.length; i++) {
                 if (formElements[i].hasAttribute('required') && !formElements[i].value) {
                     isValid = false;
